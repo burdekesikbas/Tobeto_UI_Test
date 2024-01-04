@@ -31,9 +31,9 @@ class Test_Tobeto:
         assert current_url == "https://tobeto.com/giris"
 
         eMail = WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, "email")))
-        eMail.send_keys("htugcetaskin@gmail.com")
+        eMail.send_keys("******@gmail.com")
         password = WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, "password")))
-        password.send_keys("Ebrar1189035d.")
+        password.send_keys("*******")
         Login = self.driver.find_element(By.XPATH, "//button[@class = 'btn btn-primary w-100 mt-6']")
         Login.click()
 
@@ -54,7 +54,7 @@ class Test_Tobeto:
         password = self.driver.find_element(By.XPATH, "//input[@name = 'email']/following-sibling::p[2]")
         assert password.text =="Doldurulması zorunlu alan*"
 
-    @pytest.mark.parametrize("email, ePassword", [("htuggcetaskin@gmail.com", "Ebrar1189035d."),("htugcetaskin@gmail.com", "Ebrarra1189035d."),("htugceettaskin@gmail.com", "Ebrarra1189035d."),("htuggcetaskin", "Ebrar1189035d.")])
+    @pytest.mark.parametrize("email, ePassword", [("*****@gmail.com", "*******"),("******@gmail.com", "*******"),("*****@gmail.com", "******"),("******", "******")])
     def test_WrongEmailOrPassword(self, email, ePassword):
         self.loginButton()
 
